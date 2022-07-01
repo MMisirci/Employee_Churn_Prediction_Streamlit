@@ -2,9 +2,10 @@ from re import A
 import streamlit as st
 import pandas as pd
 import numpy as np
+import pickle
 from xgboost import XGBClassifier
 from PIL import Image
-import scipy
+
 
 
 #image
@@ -71,7 +72,7 @@ df = your_car()
 st.table(df)
 
 #using trained models
-import pickle
+
 
 
 final_model=pickle.load(open("XGBBoostClassifier.pkl","rb"))
