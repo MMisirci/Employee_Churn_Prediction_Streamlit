@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
-from xgboost import XGBClassifier
+#from xgboost import XGBClassifier
 from PIL import Image
 
 
