@@ -2,8 +2,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import pickle
-#from xgboost import XGBClassifier
+
+from xgboost import XGBClassifier
 from PIL import Image
 
 
@@ -72,13 +72,13 @@ df = your_car()
 st.table(df)
 
 #using trained models
-
+import pickle
 
 
 
 final_scaler=pickle.load(open("Model_scaler.pkl","rb"))
-final_encoder=pickle.load(open("Encoder.pkl","rb"))
 final_model=pickle.load(open("XGBBoostClassifier.pkl","rb"))
+final_encoder=pickle.load(open("Encoder.pkl","rb"))
 my_dict = {
     "satisfaction_level": satisfaction_level/100,
     "last_evaluation": last_evaluation/100,
