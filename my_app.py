@@ -37,8 +37,8 @@ html_temp = """
 </div><br>"""
 st.markdown(html_temp,unsafe_allow_html=True)
 
-satisfaction_level=st.sidebar.slider("Select employee's satisfaction level", 1, 100, step=1)
-last_evaluation=st.sidebar.slider("Select last evaluation level", 1, 100, step=1)
+satisfaction_level=st.sidebar.slider("Select employee's satisfaction level", 9, 100, step=1)
+last_evaluation=st.sidebar.slider("Select last evaluation level", 62, 98, step=1)
 number_project=st.sidebar.select_slider("Select number of projects", [2,3,4,5,6,7])
 average_montly_hours=st.sidebar.slider("Select monthly work hours", 96, 310, step=1)
 time_spend_company=st.sidebar.slider("Select years of experiences", 2, 10, step=1)
