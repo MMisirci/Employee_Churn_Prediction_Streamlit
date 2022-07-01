@@ -2,8 +2,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-
-from xgboost import XGBClassifier
+#from xgboost import XGBClassifier
 from PIL import Image
 
 
