@@ -70,13 +70,13 @@ df = your_car()
 st.table(df)
 
 #using trained models
-from joblib import dump, load
+import pickle
 
 
 
-final_scaler=load("scaler.joblib")
-final_model=load("GBModel.joblib")
-final_encoder=load("encoder.joblib")
+final_scaler=pickle.load(open("modelscaler.pkl","rb"))
+final_model=pickle.load(open("xgboostClassifier.pkl","rb"))
+final_encoder=pickle.load(open("encoder.pkl","rb"))
 my_dict = {
     "satisfaction_level": satisfaction_level/100,
     "last_evaluation": last_evaluation/100,
@@ -108,4 +108,3 @@ if st.button("To get your car's price, press this button"):
         st.markdown(f"""
         #### <span style="background-color:yellow;color:red;font-size:32px;border-radius:2%;text-align:center"> Employee will leave you! Find new one!</span>
         # # """,unsafe_allow_html=True)
-
