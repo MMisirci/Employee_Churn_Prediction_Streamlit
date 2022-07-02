@@ -2,8 +2,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import sklearn
-#pytfrom xgboost import XGBClassifier
+#import sklearn
+#from xgboost import XGBClassifier
 from PIL import Image
 
 
@@ -72,13 +72,13 @@ df = your_car()
 st.table(df)
 
 #using trained models
-import pickle
+from joblib import dump, load
 
 
 
-final_scaler=pickle.load(open("modelscaler.pkl","rb"))
-final_model=pickle.load(open("xgboostClassifier.pkl","rb"))
-final_encoder=pickle.load(open("encoder.pkl","rb"))
+final_scaler=load("scaler.joblib")
+final_model=load("GBModel.joblib")
+final_encoder=load("encoder.joblib")
 my_dict = {
     "satisfaction_level": satisfaction_level/100,
     "last_evaluation": last_evaluation/100,
