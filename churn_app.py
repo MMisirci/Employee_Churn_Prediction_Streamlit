@@ -74,9 +74,8 @@ import pickle
 
 
 
-final_scaler=pickle.load(open("modelscaler.pkl","rb"))
-final_model=pickle.load(open("xgboostClassifier.pkl","rb"))
-final_encoder=pickle.load(open("encoder.pkl","rb"))
+final_scaler=pickle.load(open("final_scaler.pkl","rb"))
+final_model=pickle.load(open("final_model.pkl","rb"))
 my_dict = {
     "satisfaction_level": satisfaction_level/100,
     "last_evaluation": last_evaluation/100,
@@ -93,8 +92,18 @@ my_dict = pd.DataFrame([my_dict])
 
 scale_mapper = {"low":1, "medium":2, "high":3}
 my_dict["salary"] = my_dict["salary"].replace(scale_mapper)
-cat=my_dict.select_dtypes("object").columns
-my_dict[cat] = final_encoder.transform(my_dict[cat])
+
+my_dict = pd.get_dummies(my_dict)
+Xcolumns=['satisfaction_level', 'last_evaluation', 'number_project',
+       'average_montly_hours', 'time_spend_company', 'work_accident',
+       'promotion_last_5years', 'salary', 'departments_IT',
+       'departments_RandD', 'departments_accounting', 'departments_hr',
+       'departments_management', 'departments_marketing',
+       'departments_product_mng', 'departments_sales', 'departments_support',
+       'departments_technical']
+
+my_dict = my_dict.reindex(columns = Xcolumns, fill_value=0)
+
 my_dict = final_scaler.transform(my_dict)
 
 
