@@ -3,7 +3,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from PIL import Image
-import matplotlib.pyplot as plt
 
 
 
@@ -119,9 +118,6 @@ my_dict = final_scaler.transform(my_dict)
 
 if st.button("To get your car's price, press this button"): 
     price=int(final_model.predict(my_dict)[0])
-    import shap
-    explainer = shap.TreeExplainer(final_model)
-    shap_values = explainer.shap_values(my_dict)
     if price==0:
         st.markdown(f"""
         #### <span style="background-color:yellow;color:red;font-size:32px;border-radius:2%;text-align:center"> You have a loyal employee! </span>
