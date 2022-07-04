@@ -107,7 +107,7 @@ my_dict = my_dict.reindex(columns = Xcolumns, fill_value=0)
 my_dict = final_scaler.transform(my_dict)
 
 
-if st.button("To get your car's price, press this button"): 
+if st.button("Get the prediction of employee churn!"): 
     price=int(final_model.predict(my_dict)[0])
     if price==0:
         st.markdown(f"""
