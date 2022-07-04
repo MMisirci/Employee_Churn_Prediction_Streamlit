@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from PIL import Image
+import matplotlib.pyplot as plt
 
 
 
@@ -72,10 +73,19 @@ st.table(df)
 #using trained models
 import pickle
 
+model_selection=st.selectbox('Select a Machine Learning Algorithm', ['Gradient Boosting Algorithm','K-Neighborhood Algorithm','Random Forest Algorithm','XGBoost Classifier Algorithm'])
+if model_selection=='Gradient Boosting Algorithm':
+    final_model='GBModel.pkl'
+if model_selection=='K-Neighborhood Algorithm':
+    final_model='KNNModel.pkl'
+if model_selection=='Random Forest Algorithm':
+    final_model='RFModel.pkl'
+if model_selection=='XGBoost Classifier Algorithm':
+    final_model='XGBModel.pkl'
 
 
-final_scaler=pickle.load(open("final_scaler.pkl","rb"))
-final_model=pickle.load(open("final_model.pkl","rb"))
+final_scaler=pickle.load(open("scaler.pkl","rb"))
+final_model=pickle.load(open(final_model,"rb"))
 my_dict = {
     "satisfaction_level": satisfaction_level/100,
     "last_evaluation": last_evaluation/100,
@@ -107,8 +117,11 @@ my_dict = my_dict.reindex(columns = Xcolumns, fill_value=0)
 my_dict = final_scaler.transform(my_dict)
 
 
-if st.button("Get the prediction of employee churn!"): 
+if st.button("To get your car's price, press this button"): 
     price=int(final_model.predict(my_dict)[0])
+    import shap
+    explainer = shap.TreeExplainer(final_model)
+    shap_values = explainer.shap_values(my_dict)
     if price==0:
         st.markdown(f"""
         #### <span style="background-color:yellow;color:red;font-size:32px;border-radius:2%;text-align:center"> You have a loyal employee! </span>
