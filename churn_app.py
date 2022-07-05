@@ -132,7 +132,10 @@ if st.button("To get your car's price, press this button"):
         #### <span style="background-color:yellow;color:red;font-size:32px;border-radius:2%;text-align:center"> Employee will leave you! Find new one!</span>
         # # """,unsafe_allow_html=True)
     fig = plt.figure(figsize=(9, 7))
-    shap.summary_plot(shap_values, Xcolumns, plot_type='bar')
+    if model_selection=='Random Forest Algorithm':
+        shap.summary_plot(shap_values[0], Xcolumns, plot_type='bar')
+    else:
+        shap.summary_plot(shap_values, Xcolumns, plot_type='bar')
     st.pyplot(fig)
 
 
