@@ -121,7 +121,7 @@ import shap
 explainer = shap.TreeExplainer(final_model)
 shap_values = explainer.shap_values(my_dict)
 
-if st.button("To get your car's price, press this button"): 
+if st.button("To get the employee churn prediction and factors having impacts on this decision!"): 
     price=int(final_model.predict(my_dict)[0])
     if price==0:
         st.markdown(f"""
