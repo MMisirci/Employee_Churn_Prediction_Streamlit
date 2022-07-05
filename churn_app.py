@@ -115,6 +115,11 @@ my_dict = my_dict.reindex(columns = Xcolumns, fill_value=0)
 
 my_dict = final_scaler.transform(my_dict)
 
+import matplotlib.pyplot as plt
+import streamlit as st
+import shap
+explainer = shap.TreeExplainer(final_model)
+shap_values = explainer.shap_values(my_dict)
 
 if st.button("To get your car's price, press this button"): 
     price=int(final_model.predict(my_dict)[0])
@@ -126,3 +131,10 @@ if st.button("To get your car's price, press this button"):
         st.markdown(f"""
         #### <span style="background-color:yellow;color:red;font-size:32px;border-radius:2%;text-align:center"> Employee will leave you! Find new one!</span>
         # # """,unsafe_allow_html=True)
+    fig = plt.figure(figsize=(9, 7))
+    shap.summary_plot(shap_values, Xcolumns, plot_type='bar')
+    st.pyplot(fig)
+
+
+
+
