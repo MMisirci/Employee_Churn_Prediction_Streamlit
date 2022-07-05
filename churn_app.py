@@ -72,11 +72,11 @@ st.table(df)
 #using trained models
 import pickle
 
-model_selection=st.selectbox('Select a Machine Learning Algorithm', ['Gradient Boosting Algorithm','K-Neighborhood Algorithm','Random Forest Algorithm','XGBoost Classifier Algorithm'])
+model_selection=st.selectbox('Select a Machine Learning Algorithm', ['Gradient Boosting Algorithm','Random Forest Algorithm','XGBoost Classifier Algorithm'])
 if model_selection=='Gradient Boosting Algorithm':
     final_model='GBModel.pkl'
-if model_selection=='K-Neighborhood Algorithm':
-    final_model='KNNModel.pkl'
+#if model_selection=='K-Neighborhood Algorithm':
+    #final_model='KNNModel.pkl'
 if model_selection=='Random Forest Algorithm':
     final_model='RFModel.pkl'
 if model_selection=='XGBoost Classifier Algorithm':
