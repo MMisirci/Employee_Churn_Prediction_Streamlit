@@ -36,14 +36,14 @@ html_temp = """
 st.markdown(html_temp,unsafe_allow_html=True)
 
 satisfaction_level=st.sidebar.slider("Select employee's satisfaction level", 1, 100, step=1)
-last_evaluation=st.sidebar.slider("Select last evaluation level", 1, 100, step=1)
-number_project=st.sidebar.select_slider("Select number of projects", [2,3,4,5,6,7])
+last_evaluation=st.sidebar.slider("Select company's last evaluation level", 1, 100, step=1)
+number_project=st.sidebar.select_slider("Select project workload", [2,3,4,5,6,7])
 average_montly_hours=st.sidebar.slider("Select monthly work hours", 96, 310, step=1)
-time_spend_company=st.sidebar.slider("Select years of experiences", 2, 10, step=1)
-work_accident=st.sidebar.select_slider("Does work accident occur?", [0,1])
-promotion_last_5years=st.sidebar.select_slider("Has been promoted in last 5 years?", [0,1])
+time_spend_company=st.sidebar.slider("Select years of experiences in company", 2, 10, step=1)
+work_accident=st.sidebar.select_slider("Does employee has a work accident?", [0,1])
+promotion_last_5years=st.sidebar.select_slider("Has employee been promoted in last 5 years?", [0,1])
 departments=st.sidebar.selectbox("Select employee's department", ['sales','accounting','hr','IT','management','marketing','product_mng','RandD','support','technical'])
-salary=st.sidebar.selectbox("Select employee's department", ['low','medium','high'])
+salary=st.sidebar.selectbox("Select employee's salary level", ['low','medium','high'])
 def your_car():
     my_dict = {
         "satisfaction_level": satisfaction_level,
